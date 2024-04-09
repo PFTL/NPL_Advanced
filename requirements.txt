@@ -1,0 +1,3 @@
+# Editable install with no version control (PFTL==1.0.0)
+-e /Users/aquiles/Documents/pythonProject
+pyserial==3.5
