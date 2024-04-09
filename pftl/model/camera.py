@@ -1,19 +1,41 @@
-from time import sleep
+from threading import Thread
 
 import cv2
+import numpy as np
 
 
 class ModelCamera:
     def __init__(self, cam_num):
         self.cam_num = cam_num
         self._driver = None
+        self.last_frame = np.empty((50, 50))
+        self.is_acquiring = False
+        self.keep_acquiring = True
 
     def initialize(self):
         self._driver = cv2.VideoCapture(self.cam_num)
 
     def read_frame(self):
         ret, frame = self._driver.read()
+        self.last_frame = frame
         return frame
+
+    def free_run(self):
+        if self.is_acquiring:
+            print('Already acquiring!')
+            return
+        self.is_acquiring = True
+        self.keep_acquiring = True
+        while self.keep_acquiring:
+            frame = self.read_frame()
+        self.is_acquiring = False
+
+    def start_free_run(self):
+        self.acquire_thread = Thread(target=self.free_run)
+        self.acquire_thread.start()
+
+    def stop_free_run(self):
+        self.keep_acquiring = False
 
     @property
     def exposure(self):

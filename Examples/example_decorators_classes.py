@@ -1,11 +1,11 @@
 def check_birth_year(func):
-
     def wrapper(cls, *args):
         if cls.birth_year is None:
             print('Birth year not defined')
             return
         return func(cls, *args)
     return wrapper
+
 
 class Person:
     def __init__(self, name):
