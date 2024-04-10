@@ -22,5 +22,5 @@ class ModelDAQ:
     def finalize(self):
         self._driver.set_value(0, 0)
         self._driver.set_value(1, 0)
-        self._driver.close()
+        self._driver.finalize()
 

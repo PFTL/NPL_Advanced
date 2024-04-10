@@ -1,3 +1,14 @@
 # Editable install with no version control (PFTL==1.0.0)
 -e /Users/aquiles/Documents/pythonProject
 pyserial==3.5
+numpy~=1.26.4
+pyqt5~=5.15.10
+pftl~=1.0.0
+pyqtgraph~=0.13.4
+opencv-python~=4.9.0.80
+h5py~=3.10.0
+pyyaml~=6.0.1
+pyvisa~=1.14.1
+click~=8.1.7
+pyzmq~=25.1.2
+setuptools~=68.2.2

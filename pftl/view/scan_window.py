@@ -23,6 +23,8 @@ class ScanWindow(QMainWindow):
         self.line_stop.editingFinished.connect(self.line_updated)
         self.line_step.editingFinished.connect(self.line_updated)
 
+        self.actionSave_Data.triggered.connect(self.experiment.save_data)
+
         self.plot = self.plot_widget.plot(self.experiment.scan_voltages, self.experiment.measured_voltages)
 
         self.plot_timer = QTimer()

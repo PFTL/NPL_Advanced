@@ -22,7 +22,7 @@ class CameraViewer(QMainWindow):
 
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self.update_image)
-        self.update_timer.start(30)
+        self.update_timer.start(10)
 
         self.button_acquire.clicked.connect(self.camera.read_frame)
         self.button_start.clicked.connect(self.camera.start_free_run)
@@ -35,8 +35,4 @@ class CameraViewer(QMainWindow):
         self.camera.set_exposure(int(self.line_exposure.text()))  # Option 2
 
     def update_image(self):
-        self.image_widget.setImage(np.sum(self.camera.last_frame, 2), autoRange=False, autoLevels=False)
-
-
-
-
+        self.image_widget.setImage(self.camera.last_frame, autoRange=False, autoLevels=True)
